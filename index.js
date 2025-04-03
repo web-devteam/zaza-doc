@@ -20,7 +20,7 @@ document.getElementById("main").append(create2)}
 window.addEventListener("load", ()=>{
 
 let inter1 = setInterval(() => {
-minus2 = minus2+0.002
+minus2 = minus2+0.005
 create.style.marginTop=ran2-236-minus2+"px"
 }, 10)
 setTimeout(()=>{clearInterval(inter1)

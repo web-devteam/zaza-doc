@@ -26,7 +26,13 @@ else{
     document.getElementsByTagName("span").item(2).style.animationName=""
 on=false}
 })
-
+document.getElementById("blank").addEventListener("click", ()=>{
+   document.getElementsByTagName("audio").item(0).play()
+   document.getElementById("blank").style.animationName="move"
+   setTimeout(() => {
+    document.getElementById("blank").style.display="none"
+   }, 990); 
+})
 document.getElementsByTagName("audio").item(0).play()
 document.getElementById("close").addEventListener("click", ()=>{
     document.getElementById("box").style.display="none"

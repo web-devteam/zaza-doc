@@ -1,62 +1,42 @@
-let minus=1
-let minus2 = 1 
-let create2 = ""
-for (let index = 0; index < 2500; index++) {
-let create = document.createElement("div")
-create.className="dot"
-let ran = Math.floor(Math.random()*1000)
-let ran2 = Math.floor(Math.random()*965)
-create.style.marginLeft=ran-500+"px"
-create.style.marginTop=ran2-236+"px"
+let inter = setInterval(() => {
+let create = document.createElement("img")
+create.src="heart2.png"
+create.className="img"
+let ran = Math.floor(Math.random()*10)
+let ran2 = Math.floor(Math.random()*100)
+let ran3 = Math.floor(Math.random()*2)
+create.style.width=40+ran+"px"
+if(ran3==0){create.style.marginLeft=0+ran2+"px"}
+else{create.style.marginLeft=0-ran2+"px"}
 document.getElementById("main").append(create)
-if(index==2499){let create3 = document.createElement("div")
-create3.id="block"
-document.getElementById("main").append(create3)}
-if(index==2499){create2 = document.createElement("img")
-create2.id="img"
-create2.src="heart temp.png"
-document.getElementById("main").append(create2)}
-// animations
-window.addEventListener("load", ()=>{
-
-let inter1 = setInterval(() => {
-minus2 = minus2+0.005
-create.style.marginTop=ran2-236-minus2+"px"
-}, 10)
-setTimeout(()=>{clearInterval(inter1)
-create2.src="heart2 temp.png"
-create.style.marginTop=ran2-236+"px"
-}, 29000)
-setTimeout(() => {
-let inter2 = setInterval(() => {
-let ran3 = Math.floor(Math.random()*2)
-if(ran3==0){create.style.opacity="30%"
-setTimeout(()=>{create.style.opacity="100%"}, 99)
-}}, 100)
-setTimeout(() => {clearInterval(inter2)
-create.style.animationName="fade"
-setTimeout(() => {
-create.style.opacity="0%"}, 2000);
-}, 30000);
-}, 30500);
 
 setTimeout(() => {
-create2.src="heart4 temp.png"
-create.style.animationName="fade2"
-setTimeout(() => {
-create.style.opacity="100%"}, 2000);
-setTimeout(() => {
-let inter3 = setInterval(() => {
-let ran3 = Math.floor(Math.random()*2)
-if(ran3==0){create.style.backgroundColor="rgb(255, 0, 0.8"}
-else{create.style.backgroundColor="rgb(255, 0, 0, 0.55)"}
-}, 200);
-setTimeout(() => {clearInterval(inter3)
-create.style.backgroundColor="rgb(255, 0, 0, 0.55)"
-}, 25000);
-}, 2500);
-}, 64000);
+create.style.display="none"
+}, 900);
+}, 400);
+let on = false
+document.addEventListener("click", ()=>{
+if(on==false){document.getElementsByTagName("span").item(0).style.animationName="blink"
+document.getElementsByTagName("span").item(1).style.animationName="blink"
+document.getElementsByTagName("span").item(2).style.animationName="blink"
+on=true}
+else{
+    document.getElementsByTagName("span").item(0).style.animationName=""
+    document.getElementsByTagName("span").item(1).style.animationName=""
+    document.getElementsByTagName("span").item(2).style.animationName=""
+on=false}
 })
-}
 
-
+document.getElementsByTagName("audio").item(0).play()
+document.getElementById("close").addEventListener("click", ()=>{
+    document.getElementById("box").style.display="none"
+})
+document.addEventListener("dblclick", ()=>{
+clearInterval(inter)
+document.getElementsByTagName("span").item(0).style.animationName=""
+document.getElementsByTagName("span").item(1).style.animationName=""
+document.getElementsByTagName("span").item(2).style.animationName=""
+document.getElementsByTagName("audio").item(0).pause()
+ document.getElementById("box").style.display="flex"
+  document.getElementById("txt").innerHTML="animations stopped reload page to restart animations"
+})
